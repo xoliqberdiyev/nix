@@ -118,7 +118,6 @@
     wget
     termius	
     btop
-    yandex-music
     bruno
   ];
 
