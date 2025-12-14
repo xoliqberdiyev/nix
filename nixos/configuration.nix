@@ -99,7 +99,6 @@
     extraGroups = [ "docker" "networkmanager" "wheel" ];
     packages = with pkgs; [
       kdePackages.kate
-      steam
     ];
   };
 
@@ -135,5 +134,5 @@
     };
   };
 
-  system.stateVersion = "25.05";
+  system.stateVersion = "25.11";
 }
