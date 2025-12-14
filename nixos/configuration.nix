@@ -81,7 +81,7 @@
   };
 
   services.printing.enable = true;
-
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
