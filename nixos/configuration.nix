@@ -66,11 +66,14 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
 
-  services.xserver.enable = true;
-
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.plasma6.enable = true;
-  #services.flatpak.enable = true;
+  services.xserver = {
+    enable = true;
+  };
+  services = {
+    desktopManager.plasma6.enable = true;
+    displayManager.sddm.enable = true; 
+  };
+  # services.flatpak.enable = true;
 
   services.xserver.xkb = {
     layout = "us";
@@ -79,7 +82,6 @@
 
   services.printing.enable = true;
 
-  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
