@@ -3,35 +3,35 @@
 {
   programs.neovim = {
     enable = true;
-    defaultEditor = true;  # Neovim ni default editor qilish
-    viAlias = true;        # vi buyrug'i ham neovim ni ochadi
-    vimAlias = true;       # vim buyrug'i ham neovim ni ochadi
-    vimdiffAlias = true;   # vimdiff buyrug'i ham neovim ni ishlatadi
+    defaultEditor = true; # Neovim ni default editor qilish
+    viAlias = true; # vi buyrug'i ham neovim ni ochadi
+    vimAlias = true; # vim buyrug'i ham neovim ni ochadi
+    vimdiffAlias = true; # vimdiff buyrug'i ham neovim ni ishlatadi
 
     # Qo'shimcha paketlar (LSP, formatters, va h.k.)
     extraPackages = with pkgs; [
       # LSP servers
       lua-language-server
-      nil                    # Nix LSP
+      nil # Nix LSP
       nodePackages.typescript-language-server
-      nodePackages.vscode-langservers-extracted  # HTML, CSS, JSON
+      nodePackages.vscode-langservers-extracted # HTML, CSS, JSON
       rust-analyzer
-      gopls                  # Go
-      pyright                # Python LSP
-      
+      gopls # Go
+      pyright # Python LSP
+
       # Formatters
-      stylua                 # Lua formatter
-      alejandra              # Nix formatter
-      nodePackages.prettier  # JS/TS/JSON formatter
-      black                  # Python formatter
-      isort                  # Python import formatter
-      
+      stylua # Lua formatter
+      alejandra # Nix formatter
+      nodePackages.prettier # JS/TS/JSON formatter
+      black # Python formatter
+      isort # Python import formatter
+
       # Linters
-      ruff                   # Python linter
-      
+      ruff # Python linter
+
       # Tools
-      ripgrep                # Tez qidiruv
-      fd                     # Tez fayl qidiruv
+      ripgrep # Tez qidiruv
+      fd # Tez fayl qidiruv
       tree-sitter
     ];
 
@@ -118,6 +118,8 @@
 
     # Neovim konfiguratsiyasi
     extraLuaConfig = ''
+      vim.deprecate = function() end
+
       -- Leader key
       vim.g.mapleader = " "
       vim.g.maplocalleader = " "
@@ -188,6 +190,37 @@
       -- LSP setup
       local lspconfig = require('lspconfig')
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+      lspconfig.lua_ls.setup {
+        capabilities = capabilities,
+        settings = {
+          Lua = {
+            diagnostics = { globals = { 'vim' } },
+          },
+        },
+      }
+
+      lspconfig.nil_ls.setup { capabilities = capabilities }
+      lspconfig.ts_ls.setup { capabilities = capabilities }
+      lspconfig.rust_analyzer.setup { capabilities = capabilities }
+      lspconfig.gopls.setup { capabilities = capabilities }
+
+      lspconfig.html.setup { capabilities = capabilities }
+      lspconfig.cssls.setup { capabilities = capabilities }
+      lspconfig.jsonls.setup { capabilities = capabilities }
+
+      lspconfig.pyright.setup {
+        capabilities = capabilities,
+        settings = {
+          python = {
+            analysis = {
+              typeCheckingMode = "basic",
+              autoSearchPaths = true,
+              useLibraryCodeForTypes = true,
+            },
+          },
+        },
+      }
 
       -- Lua LSP
       lspconfig.lua_ls.setup {
@@ -301,3 +334,4 @@
     '';
   };
 }
+
