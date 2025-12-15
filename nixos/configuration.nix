@@ -98,6 +98,7 @@
     packages = with pkgs; [
       kdePackages.kate
       steam
+      home-assistant-component-tests.epic_games_store
     ];
   };
 
