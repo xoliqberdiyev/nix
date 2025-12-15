@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./alacritty.nix
+    ./alacritty/default.nix
     ./neovim.nix
   ];
 }
