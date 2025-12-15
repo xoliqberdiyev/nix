@@ -152,7 +152,7 @@
         options = {
           theme = 'gruvbox',
           component_separators = '|',
-          section_separators = { left = '', right = '' },
+          section_separators = { left = ''; right = '' },
         }
       }
 
