@@ -117,6 +117,7 @@
     termius	
     btop
     bruno
+    google-chrome
   ];
 
   # programs.mtr.enable = true;
