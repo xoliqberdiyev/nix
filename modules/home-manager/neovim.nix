@@ -17,7 +17,7 @@
       nodePackages.vscode-langservers-extracted  # HTML, CSS, JSON
       rust-analyzer
       gopls                  # Go
-      pyright                # Python LSP
+      py      pyright                # Python LSP
       
       # Formatters
       stylua                 # Lua formatter
