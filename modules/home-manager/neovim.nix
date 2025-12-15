@@ -119,7 +119,22 @@
     # Neovim konfiguratsiyasi
     extraLuaConfig = ''
       vim.deprecate = function() end
+      local map = vim.keymap.set
+     
+      map('n', '<S-Up>', 'v<Up>', { desc = 'Select line up' })
+      map('n', '<S-Down>', 'v<Down>', { desc = 'Select line down' })
 
+      map('i', '<S-Up>', '<Esc>v<Up>', { desc = 'Select line up in insert mode' })
+      map('i', '<S-Down>', '<Esc>v<Down>', { desc = 'Select line down in insert mode' })
+      map('v', '<S-Up>', 'gk', { desc = 'Move selection up' })
+      map('v', '<S-Down>', 'gj', { desc = 'Move selection down' })
+      map('n', '<C-z>', '<cmd>undo<CR>', { desc = 'Undo' })
+      map('i', '<C-z>', '<Esc><cmd>undo<CR>a', { desc = 'Undo in insert mode' })
+
+      -- Paste (system clipboard)
+      map('n', '<C-v>', '"+p', { desc = 'Paste from system clipboard' })
+      map('i', '<C-v>', '<C-r>+', { desc = 'Paste from system clipboard in insert mode' })
+      map('v', '<C-v>', '"+p', { desc = 'Paste from system clipboard in visual mode' })
       -- Leader key
       vim.g.mapleader = " "
       vim.g.maplocalleader = " "
