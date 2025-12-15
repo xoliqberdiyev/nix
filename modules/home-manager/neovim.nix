@@ -17,7 +17,7 @@
       nodePackages.vscode-langservers-extracted  # HTML, CSS, JSON
       rust-analyzer
       gopls                  # Go
-      py      pyright                # Python LSP
+      pyright                # Python LSP
       
       # Formatters
       stylua                 # Lua formatter
@@ -152,7 +152,6 @@
         options = {
           theme = 'gruvbox',
           component_separators = '|',
-          section_separators = { left = ''; right = '' },
         }
       }
 
