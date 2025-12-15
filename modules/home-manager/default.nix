@@ -2,7 +2,8 @@
 
 {
   imports = [
-    ./alacritty/default.nix
-    ./neovim/default.nix
+    ./alacritty
+    ./neovim
+    ./hyprland
   ];
 }

@@ -9,12 +9,16 @@
     # Home manager
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Hyprland
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
   outputs = {
     self,
     nixpkgs,
     home-manager,
+    hyprland,
     ...
   } @ inputs: let
     systems = [
@@ -44,7 +48,7 @@
 
     homeConfigurations = {
       "behruz@xoliqberdiyev" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.x86_64-linux; # FIXME replace x86_64-linux with your architecure 
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = {inherit inputs;};
         modules = [
           ./home-manager/home.nix
