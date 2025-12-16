@@ -72,11 +72,6 @@
     displayManager.sddm.enable = true; 
   };
   # services.flatpak.enable = true;
-  programs.hyprland = {
-    enable = true;
-  };
-  programs.dconf.enable = true;
-
 
   services.xserver.xkb = {
     layout = "us";
