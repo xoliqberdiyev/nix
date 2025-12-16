@@ -32,27 +32,5 @@
 
   systemd.user.startServices = "sd-switch";
 
-  home.stateVersion = "25.11";
-
-  {
-    wayland.windowManager.hyprland = {
-      enable = true;
-
-      package =
-        inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-
-      portalPackage =
-        inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-      # plugin and settings
-      plugins = [
-        inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprexpo
-      ];
-
-      settings = {
-        bind = [
-          "SUPER, TAB, hyprexpo:toggle"
-        ];
-      };
-    };
-  }
+  home.stateVersion = "25.11"; 
 }
