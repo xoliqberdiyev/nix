@@ -99,6 +99,7 @@
       kdePackages.kate
       steam
       home-assistant-component-tests.epic_games_store
+      postman
     ];
   };
 
@@ -119,11 +120,8 @@
     btop
     bruno
     google-chrome
+    mangohud
   ];
-
-  # hyprland
-  programs.hyprland.enable = true;
-  programs.hyprland.package = inputs.hyprland.packages."${pkgs.system}".hyprland;
 
   services.openssh = {
     enable = true;
@@ -134,4 +132,8 @@
   };
 
   system.stateVersion = "25.11";
+
+  programs.steam.enable = true;
+  programs.steam.gamescopeSession.enable = true;
+  programs.gamemode.enable = true;
 }
