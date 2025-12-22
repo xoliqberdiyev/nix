@@ -121,6 +121,7 @@
     bruno
     google-chrome
     mangohud
+    floorp-bin
   ];
 
   services.openssh = {
