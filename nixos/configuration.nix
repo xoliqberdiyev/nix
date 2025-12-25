@@ -97,8 +97,6 @@
     extraGroups = [ "docker" "networkmanager" "wheel" ];
     packages = with pkgs; [
       kdePackages.kate
-      steam
-      home-assistant-component-tests.epic_games_store
       postman
     ];
   };
@@ -133,8 +131,4 @@
   };
 
   system.stateVersion = "25.11";
-
-  programs.steam.enable = true;
-  programs.steam.gamescopeSession.enable = true;
-  programs.gamemode.enable = true;
 }
