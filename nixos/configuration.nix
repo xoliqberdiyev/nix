@@ -98,6 +98,7 @@
     packages = with pkgs; [
       kdePackages.kate
       postman
+      rPackages.RobLox
     ];
   };
 
