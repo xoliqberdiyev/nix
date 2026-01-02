@@ -121,7 +121,7 @@
     google-chrome
     mangohud
     floorp-bin
-    zed
+    zed-editor
   ];
 
   services.openssh = {
