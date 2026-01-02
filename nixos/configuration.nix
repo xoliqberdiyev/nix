@@ -6,17 +6,6 @@
   ...
 }: {
   imports = [
-    # If you want to use modules your own flake exports (from modules/nixos):
-    # inputs.self.nixosModules.example
-
-    # Or modules from other flakes (such as nixos-hardware):
-    # inputs.hardware.nixosModules.common-cpu-amd
-    # inputs.hardware.nixosModules.common-ssd
-
-    # You can also split up your configuration and import pieces of it here:
-    # ./users.nix
-
-    # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
   ];
 
@@ -26,12 +15,6 @@
       inputs.self.overlays.modifications
       inputs.self.overlays.unstable-packages
 
-      # Or define it inline, for example:
-      # (final: prev: {
-      #   hi = final.hello.overrideAttrs (oldAttrs: {
-      #     patches = [ ./change-hello-to-hi.patch ];
-      #   });
-      # })
     ];
     config = {
       allowUnfree = true;
@@ -55,9 +38,6 @@
   
   networking.hostName = "xoliqberdiyev";
   
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
   networking.networkmanager.enable = true;
 
   time.timeZone = "Asia/Tashkent";
@@ -96,9 +76,7 @@
     description = "behruz";
     extraGroups = [ "docker" "networkmanager" "wheel" ];
     packages = with pkgs; [
-      kdePackages.kate
       postman
-      rPackages.RobLox
     ];
   };
 
@@ -121,7 +99,6 @@
     google-chrome
     mangohud
     floorp-bin
-    zed-editor
   ];
 
   services.openssh = {
