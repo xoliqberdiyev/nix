@@ -99,6 +99,8 @@
     google-chrome
     mangohud
     floorp-bin
+    zed-editor
+    starship
   ];
 
   services.openssh = {
