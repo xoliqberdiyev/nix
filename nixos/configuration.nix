@@ -46,13 +46,13 @@
 
   services.xserver = {
     enable = true;
-    desktopManager.gnome.enable = true;
-    displayManager.gdm.enable = true;
   };
 
   services = {
-    desktopManager.plasma6.enable = false;
-    displayManager.sddm.enable = false; 
+    desktopManager.plasma6.enable = true;
+    displayManager.sddm.enable = true; 
+    desktopManager.gnome.enable = false;
+    displayManager.gdm.enable = false;
   };
   # services.flatpak.enable = true;
 
@@ -98,7 +98,6 @@
     wget
     termius	
     btop
-    bruno
     google-chrome
     mangohud
     floorp-bin
