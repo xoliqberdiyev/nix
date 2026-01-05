@@ -46,10 +46,13 @@
 
   services.xserver = {
     enable = true;
+    desktopManager.gnome.enable = true;
+    displayManager.gdm.enable = true;
   };
+
   services = {
-    desktopManager.plasma6.enable = true;
-    displayManager.sddm.enable = true; 
+    desktopManager.plasma6.enable = false;
+    displayManager.sddm.enable = false; 
   };
   # services.flatpak.enable = true;
 
