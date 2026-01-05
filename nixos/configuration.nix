@@ -49,32 +49,16 @@
   };
 
   services = {
-    desktopManager.plasma6.enable = false;
-    # displayManager.sddm.enable = false; 
+    desktopManager.plasma6.enable = true;
+    displayManager.sddm.enable = true; 
     desktopManager.gnome.enable = false;
     displayManager.gdm.enable = false;
   };
 
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
-
-  # Display manager (ixtiyoriy - login ekrani uchun)
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-  };
-  # services.flatpak.enable = true;
 
   services.xserver.xkb = {
     layout = "us";
     variant = "";
-  };
-
-  xdg.portal = {
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
   services.printing.enable = true;
@@ -87,7 +71,7 @@
     pulse.enable = true;
     #jack.enable = true;
 
-    #media-session.enable = true;
+    media-session.enable = true;
   };
 
   users.users.behruz = {
@@ -127,28 +111,6 @@
     rustc
     cargo
     rust-analyzer
-    waybar          # Status bar
-    wofi            # Application launcher
-    dunst           # Notification daemon
-    kitty           # Terminal
-    swww            # Wallpaper
-    grim            # Screenshot
-    slurp           # Screen area selector
-    wl-clipboard    # Clipboard
-    networkmanagerapplet
-    papirus-icon-theme
-    gruvbox-gtk-theme
-    brightnessctl
-    pavucontrol
-    networkmanagerapplet
-    xfce.thunar
-    xfce.tumbler
-    grim
-    slurp
-    wl-clipboard
-    cliphist
-    hyprpaper
-    libnotify
   ];
 
   services.openssh = {
