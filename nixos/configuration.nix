@@ -49,21 +49,21 @@
   };
 
   services = {
-    desktopManager.plasma6.enable = true;
+    desktopManager.plasma6.enable = false;
     # displayManager.sddm.enable = false; 
     desktopManager.gnome.enable = false;
     displayManager.gdm.enable = false;
   };
 
   programs.hyprland = {
-    enable = false;
-    xwayland.enable = false;
+    enable = true;
+    xwayland.enable = true;
   };
 
   # Display manager (ixtiyoriy - login ekrani uchun)
   services.displayManager.sddm = {
     enable = true;
-    wayland.enable = false;
+    wayland.enable = true;
   };
   # services.flatpak.enable = true;
 
