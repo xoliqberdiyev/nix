@@ -49,27 +49,32 @@
   };
 
   services = {
-    desktopManager.plasma6.enable = false;
-    displayManager.sddm.enable = false; 
+    desktopManager.plasma6.enable = true;
+    # displayManager.sddm.enable = false; 
     desktopManager.gnome.enable = false;
     displayManager.gdm.enable = false;
   };
 
   programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
+    enable = false;
+    xwayland.enable = false;
   };
 
   # Display manager (ixtiyoriy - login ekrani uchun)
   services.displayManager.sddm = {
     enable = true;
-    wayland.enable = true;
+    wayland.enable = false;
   };
   # services.flatpak.enable = true;
 
   services.xserver.xkb = {
     layout = "us";
     variant = "";
+  };
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
   };
 
   services.printing.enable = true;
@@ -131,6 +136,19 @@
     slurp           # Screen area selector
     wl-clipboard    # Clipboard
     networkmanagerapplet
+    papirus-icon-theme
+    gruvbox-gtk-theme
+    brightnessctl
+    pavucontrol
+    networkmanagerapplet
+    xfce.thunar
+    xfce.tumbler
+    grim
+    slurp
+    wl-clipboard
+    cliphist
+    hyprpaper
+    libnotify
   ];
 
   services.openssh = {

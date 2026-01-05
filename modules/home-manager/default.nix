@@ -4,5 +4,6 @@
   imports = [
     ./alacritty
     ./neovim
+    ./hyprland
   ];
 }
