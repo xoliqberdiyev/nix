@@ -118,6 +118,13 @@
 
     # Neovim konfiguratsiyasi
     extraLuaConfig = ''
+      require("toggleterm").setup{
+        size = 20,
+        open_mapping = [[<leader>t]],
+        direction = "horizontal", -- vertical | float | tab
+        close_on_exit = true,
+        shell = vim.o.shell,
+      }
       vim.deprecate = function() end
       local map = vim.keymap.set
      
@@ -228,10 +235,12 @@
         capabilities = capabilities,
         settings = {
           python = {
+            pythonPath = "/venv/bin/python"
             analysis = {
               typeCheckingMode = "basic",
               autoSearchPaths = true,
               useLibraryCodeForTypes = true,
+              diagnosticMode = "workspace",
             },
           },
         },
