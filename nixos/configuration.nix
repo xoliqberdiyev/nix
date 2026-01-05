@@ -101,6 +101,14 @@
     floorp-bin
     zed-editor
     starship
+    python313
+    python312
+    pyright
+    go
+    gopls
+    rustc
+    cargo
+    rust-analyzer
   ];
 
   services.openssh = {
