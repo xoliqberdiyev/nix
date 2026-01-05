@@ -49,10 +49,21 @@
   };
 
   services = {
-    desktopManager.plasma6.enable = true;
-    displayManager.sddm.enable = true; 
+    desktopManager.plasma6.enable = false;
+    displayManager.sddm.enable = false; 
     desktopManager.gnome.enable = false;
     displayManager.gdm.enable = false;
+  };
+
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
+
+  # Display manager (ixtiyoriy - login ekrani uchun)
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
   };
   # services.flatpak.enable = true;
 
@@ -111,6 +122,15 @@
     rustc
     cargo
     rust-analyzer
+    waybar          # Status bar
+    wofi            # Application launcher
+    dunst           # Notification daemon
+    kitty           # Terminal
+    swww            # Wallpaper
+    grim            # Screenshot
+    slurp           # Screen area selector
+    wl-clipboard    # Clipboard
+    networkmanagerapplet
   ];
 
   services.openssh = {
