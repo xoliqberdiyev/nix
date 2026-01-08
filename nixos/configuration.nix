@@ -71,7 +71,7 @@
     pulse.enable = true;
     #jack.enable = true;
 
-    media-session.enable = true;
+    # media-session.enable = true;
   };
 
   users.users.behruz = {
@@ -120,6 +120,7 @@
       PasswordAuthentication = false;
     };
   };
+  
 
   system.stateVersion = "25.11";
 }
