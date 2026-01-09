@@ -111,6 +111,11 @@
     rustc
     cargo
     rust-analyzer
+    nodejs_20
+    nodePackages.typescript
+    nodePackages.typescript-language-server
+    nodePackages.eslint
+    nodePackages.prettier
   ];
 
   services.openssh = {
