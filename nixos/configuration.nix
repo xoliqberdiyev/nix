@@ -51,10 +51,8 @@
   services = {
     desktopManager.plasma6.enable = true;
     displayManager.sddm.enable = true; 
-    desktopManager.gnome.enable = false;
-    displayManager.gdm.enable = false;
   };
-
+  
 
   services.xserver.xkb = {
     layout = "us";
