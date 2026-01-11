@@ -20,6 +20,7 @@
       allowUnfree = true;
     };
   };
+  
 
   nix = let
     flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
@@ -67,9 +68,6 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    #jack.enable = true;
-
-    # media-session.enable = true;
   };
 
   users.users.behruz = {
@@ -97,23 +95,16 @@
     termius	
     btop
     google-chrome
-    mangohud
     floorp-bin
     zed-editor
     starship
     python313
-    python312
     pyright
     go
     gopls
     rustc
     cargo
     rust-analyzer
-    nodejs_20
-    nodePackages.typescript
-    nodePackages.typescript-language-server
-    nodePackages.eslint
-    nodePackages.prettier
   ];
 
   services.openssh = {
