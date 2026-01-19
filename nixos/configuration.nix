@@ -82,23 +82,25 @@
 
   virtualisation.docker.enable = true;
   environment.systemPackages = with pkgs; [
-    inputs.zen-browser.packages.${pkgs.system}.default
-    telegram-desktop
+    # browsers
     brave
-    alacritty
-    zellij
-    vim
-    git
-    neovim
-    vscode
-    docker-compose
-    wget
-    termius	
-    btop
-    google-chrome
     floorp-bin
+    inputs.zen-browser.packages.${pkgs.system}.default
+    google-chrome
+    
+    # desktop apps
+    telegram-desktop
+    termius
+    
+    # code editors
+    vscode
+    vim
+    neovim
     zed-editor
-    starship
+    
+    # programming languages & tools
+    docker-compose
+    git
     python313
     pyright
     go
@@ -106,6 +108,13 @@
     rustc
     cargo
     rust-analyzer
+    
+    # utilities
+    alacritty
+    zellij
+    wget
+    btop
+    starship
   ];
 
   services.openssh = {
@@ -116,6 +125,5 @@
     };
   };
   
-
   system.stateVersion = "25.11";
 }
