@@ -91,7 +91,8 @@
     # desktop apps
     telegram-desktop
     termius
-    
+    element-desktop
+
     # code editors
     vscode
     vim
