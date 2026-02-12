@@ -92,6 +92,7 @@
     telegram-desktop
     termius
     element-desktop
+    steam
 
     # code editors
     vscode
