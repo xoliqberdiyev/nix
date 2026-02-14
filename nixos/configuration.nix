@@ -92,7 +92,6 @@
     telegram-desktop
     termius
     element-desktop
-    steam
     wpsoffice
 
     # code editors
