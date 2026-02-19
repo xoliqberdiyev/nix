@@ -95,7 +95,6 @@
     wpsoffice
 
     # code editors
-    vscode
     vim
     neovim
     zed-editor
