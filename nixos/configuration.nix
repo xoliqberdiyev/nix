@@ -93,6 +93,7 @@
     termius
     element-desktop
     wpsoffice
+    vlc
 
     # code editors
     vim
