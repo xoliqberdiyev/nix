@@ -126,6 +126,9 @@
       PasswordAuthentication = false;
     };
   };
+
   
   system.stateVersion = "25.11";
+
+
 }
