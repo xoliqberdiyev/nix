@@ -20,7 +20,7 @@
       allowUnfree = true;
     };
   };
-  
+
 
   nix = let
     flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
@@ -36,9 +36,9 @@
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
   };
 
-  
+
   networking.hostName = "xoliqberdiyev";
-  
+
   networking.networkmanager.enable = true;
 
   time.timeZone = "Asia/Tashkent";
@@ -51,9 +51,9 @@
 
   services = {
     desktopManager.plasma6.enable = true;
-    displayManager.sddm.enable = true; 
+    displayManager.sddm.enable = true;
   };
-  
+
 
   services.xserver.xkb = {
     layout = "us";
@@ -87,19 +87,20 @@
     floorp-bin
     inputs.zen-browser.packages.${pkgs.system}.default
     google-chrome
-    
+
     # desktop apps
     telegram-desktop
     termius
     element-desktop
     wpsoffice
     vlc
+    anydesk
 
     # code editors
     vim
     neovim
     zed-editor
-    
+
     # programming languages & tools
     docker-compose
     git
@@ -110,7 +111,7 @@
     rustc
     cargo
     rust-analyzer
-    
+
     # utilities
     alacritty
     zellij
@@ -127,7 +128,7 @@
     };
   };
 
-  
+
   system.stateVersion = "25.11";
 
 
