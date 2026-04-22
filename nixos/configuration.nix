@@ -39,7 +39,11 @@
 
   networking.hostName = "xoliqberdiyev";
 
-  networking.networkmanager.enable = true;
+  networking.networkmanager = {
+    enable = true;
+    wifi.powersave = false;
+    insertNameservers = [ "8.8.8.8" "1.1.1.1" ];
+  };
 
   time.timeZone = "Asia/Tashkent";
 
@@ -78,7 +82,6 @@
       postman
     ];
   };
-
 
   virtualisation.docker.enable = true;
   environment.systemPackages = with pkgs; [
