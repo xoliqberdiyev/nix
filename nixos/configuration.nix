@@ -82,8 +82,17 @@
       postman
     ];
   };
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    stdenv.cc.cc.lib  # provides libstdc++.so.6
+  ];
 
-  virtualisation.docker.enable = true;
+  virtualisation.docker = {
+    enable = true;
+    daemon.settings = {
+      insecure-registries = [ "194.164.235.56:5000" ];
+    };
+  };
   environment.systemPackages = with pkgs; [
     # browsers
     brave
