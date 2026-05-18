@@ -9,18 +9,18 @@
     ./hardware-configuration.nix
   ];
 
+  # Boot loader — MUHIM, qo'shilmagan edi
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
   nixpkgs = {
     overlays = [
       inputs.self.overlays.additions
       inputs.self.overlays.modifications
       inputs.self.overlays.unstable-packages
-
     ];
-    config = {
-      allowUnfree = true;
-    };
+    config.allowUnfree = true;
   };
-
 
   nix = let
     flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
@@ -29,39 +29,42 @@
       experimental-features = "nix-command flakes";
       flake-registry = "";
       nix-path = config.nix.nixPath;
+      # Bonus: build performance
+      auto-optimise-store = true;
     };
     channel.enable = false;
-
     registry = lib.mapAttrs (_: flake: {inherit flake;}) flakeInputs;
     nixPath = lib.mapAttrsToList (n: _: "${n}=flake:${n}") flakeInputs;
+
+    # Avtomatik garbage collection
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
   };
 
-
-  networking.hostName = "xoliqberdiyev";
-
-  networking.networkmanager = {
-    enable = true;
-    wifi.powersave = false;
-    insertNameservers = [ "8.8.8.8" "1.1.1.1" ];
+  networking = {
+    hostName = "xoliqberdiyev";
+    networkmanager = {
+      enable = true;
+      wifi.powersave = false;
+      insertNameservers = [ "8.8.8.8" "1.1.1.1" ];
+    };
   };
 
   time.timeZone = "Asia/Tashkent";
-
   i18n.defaultLocale = "en_US.UTF-8";
 
+  # services.xserver bitta blokda
   services.xserver = {
     enable = true;
-  };
-
-  services = {
-    desktopManager.plasma6.enable = true;
-    displayManager.sddm.enable = true;
-  };
-
-
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "";
+    displayManager.gdm.enable = true;
+    desktopManager.gnome.enable = true;
+    xkb = {
+      layout = "us";
+      variant = "";
+    };
   };
 
   services.printing.enable = true;
@@ -81,11 +84,25 @@
     packages = with pkgs; [
       postman
     ];
+    # SSH kalitlaringizni qo'shing
+    # openssh.authorizedKeys.keys = [
+    #   "ssh-ed25519 AAAA... your-key"
+    # ];
   };
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-    stdenv.cc.cc.lib  # provides libstdc++.so.6
-  ];
+
+  # nix-ld kengaytirilgan
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      stdenv.cc.cc.lib
+      zlib
+      openssl
+      curl
+      glib
+      libxml2
+      icu
+    ];
+  };
 
   virtualisation.docker = {
     enable = true;
@@ -93,10 +110,10 @@
       insecure-registries = [ "194.164.235.56:5000" ];
     };
   };
+
   environment.systemPackages = with pkgs; [
     # browsers
     brave
-    floorp-bin
     inputs.zen-browser.packages.${pkgs.system}.default
     google-chrome
 
@@ -108,12 +125,12 @@
     vlc
     anydesk
 
-    # code editors
+    # editors
     vim
     neovim
     zed-editor
 
-    # programming languages & tools
+    # dev tools
     docker-compose
     git
     python313
@@ -123,6 +140,7 @@
     rustc
     cargo
     rust-analyzer
+    nodejs_20  # Claude Code uchun
 
     # utilities
     alacritty
@@ -140,8 +158,20 @@
     };
   };
 
-
   system.stateVersion = "25.11";
 
+  # Bluetooth
+  hardware.bluetooth = {
+    enable = true;
+    powerOnBoot = true;
+  };
 
+  # Blueman GUI (ixtiyoriy, lekin foydali)
+  services.blueman.enable = true;
+
+  # Firmware (AMD CPU mikrokod uchun)
+  hardware.enableRedistributableFirmware = true;
+
+  # SSD bo'lsa - TRIM
+  services.fstrim.enable = true;
 }

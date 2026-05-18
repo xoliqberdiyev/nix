@@ -26,8 +26,16 @@
     stateVersion = "25.11";
   };
 
+  programs.bash = {
+    enable = true;
+  };
   programs.home-manager.enable = true;
   programs.git.enable = true;
+  programs.starship = {
+    enable = true;
+    enableBashIntegration = true;   # bash ishlatsangiz
+  };
+
 
   systemd.user.startServices = "sd-switch";
 }
