@@ -12,7 +12,6 @@
   # Boot loader — MUHIM, qo'shilmagan edi
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
-
   nixpkgs = {
     overlays = [
       inputs.self.overlays.additions
@@ -21,6 +20,7 @@
     ];
     config.allowUnfree = true;
   };
+  programs.firefox.enable = true;
 
   nix = let
     flakeInputs = lib.filterAttrs (_: lib.isType "flake") inputs;
@@ -29,7 +29,6 @@
       experimental-features = "nix-command flakes";
       flake-registry = "";
       nix-path = config.nix.nixPath;
-      # Bonus: build performance
       auto-optimise-store = true;
     };
     channel.enable = false;

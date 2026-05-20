@@ -8,7 +8,6 @@
   imports = [
     ../modules/home-manager
   ];
-
   nixpkgs = {
     overlays = [
       inputs.self.overlays.additions
@@ -19,13 +18,15 @@
       allowUnfree = true;
     };
   };
-
   home = {
     username = "behruz";
     homeDirectory = "/home/behruz";
     stateVersion = "25.11";
-  };
 
+    packages = with pkgs; [
+      claude-code
+    ];
+  };
   programs.bash = {
     enable = true;
   };
@@ -33,9 +34,10 @@
   programs.git.enable = true;
   programs.starship = {
     enable = true;
-    enableBashIntegration = true;   # bash ishlatsangiz
+    enableBashIntegration = true;
   };
-
-
+  programs.bash.shellAliases = {
+    zed = "zeditor";
+  };
   systemd.user.startServices = "sd-switch";
 }
